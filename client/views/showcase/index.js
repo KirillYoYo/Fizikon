@@ -5,6 +5,17 @@ import {Select, Input, Spin, Button} from 'antd';
 
 const Option = Select.Option;
 const Search = Input.Search;
+import { CSSTransition, TransitionGroup  } from 'react-transition-group'
+
+const Fade = ({ children, ...props }) => (
+    <CSSTransition
+        {...props}
+        classNames="fade"
+        className="courses-sci"
+    >
+        {children}
+    </CSSTransition>
+);
 
 export default class Showcase extends React.Component {
 
@@ -60,7 +71,7 @@ export default class Showcase extends React.Component {
         }
         // если фильтрация инициализированна не через поиск:
         let arr = this.state.filterArr;
-        // првоеряем на удовлетворения условиям фильтров
+        // проверяем на удовлетворения условиям фильтров
         function isAllOk (item) {
             let res = true;
             for (let i = 0; i < arr.length; i ++) {
@@ -185,48 +196,52 @@ export default class Showcase extends React.Component {
                         {this.state.paymentMethod === 'rub' ? 'Бонусы' : 'Рубли'}
                     </Button>
                 </div>
-                <div className="courses-list">
-                    {loading ? <Spin size="large"/> : null}
+                <div className="">
+                    {loading ? <div className={'spinner'}><Spin size="large"/></div> : null}
+                    <TransitionGroup className="courses-list" >
                     {
                         coursesList && coursesList.map((item, i) => {
 
                             return (
-                                <div className="courses-sci" key={i}>
-                                    <div className="sci-figure">
-                                        {
-                                            !item.img ?
-                                                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRogidlVrfx2Q_qKWJIZ43w4RbD4YCaf6lBXG5LjnyrxxZ8Q4xw' alt=""/>
-                                                :
-                                                <img src={item.img} alt=""/>
-                                        }
-                                    </div>
-                                    <div className="sci-info">
-                                        <div className="sci-title">
-                                            {item.title}
-                                        </div>
-                                        <div className="sci-grade">
-                                            <span>{item.grade.replace(';', '-')} </span>
-                                            <span>{item.grade < 10 ? 'класс' : 'классов'}</span>
-                                        </div>
-                                        <div className="sci-genre">
-                                            {item.genre}
-                                        </div>
-                                        <div className="price">
+                                <Fade className={'sdsdsdsd'} key={i}>
+                                    <div className="courses-sci">
+                                        <div className="sci-figure">
                                             {
-                                                this.state.paymentMethod === 'rub' ? item.price + ' р.' : item.price*1.2 + ' бонусов'
+                                                !item.img ?
+                                                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRogidlVrfx2Q_qKWJIZ43w4RbD4YCaf6lBXG5LjnyrxxZ8Q4xw' alt=""/>
+                                                    :
+                                                    <img src={item.img} alt=""/>
                                             }
                                         </div>
-                                        <div className="sci-meta">
-                                            <a href="#">Перейти к обучению</a>
-                                        </div>
-                                        <div className="sci-controls">
-                                            <a href={item.shopUrl}>Подробнее</a>
+                                        <div className="sci-info">
+                                            <div className="sci-title">
+                                                {item.title}
+                                            </div>
+                                            <div className="sci-grade">
+                                                <span>{item.grade.replace(';', '-')} </span>
+                                                <span>{item.grade < 10 ? 'класс' : 'классов'}</span>
+                                            </div>
+                                            <div className="sci-genre">
+                                                {item.genre}
+                                            </div>
+                                            <div className="price">
+                                                {
+                                                    this.state.paymentMethod === 'rub' ? item.price + ' р.' : item.price*1.2 + ' бонусов'
+                                                }
+                                            </div>
+                                            <div className="sci-meta">
+                                                <a href="#">Перейти к обучению</a>
+                                            </div>
+                                            <div className="sci-controls">
+                                                <a href={item.shopUrl}>Подробнее</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Fade>
                             )
                         })
                     }
+                    </TransitionGroup>
                 </div>
             </div>
         );

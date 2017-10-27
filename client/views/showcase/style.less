@@ -144,11 +144,36 @@
 			}
 
 		}
+	}
+
+	.spinner {
+		width: 100%;
+		text-align: center;
+		padding: 30px 0px;
 
 		.ant-spin {
-			position: relative;
+			position: relative !important;
 			display: block;
 			padding: 30px 0px 30px;
 		}
 	}
+}
+
+
+.fade-enter {
+	opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+	opacity: 1;
+	transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+	opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+	opacity: 0.01;
+	transition: opacity 200ms ease-in;
 }
