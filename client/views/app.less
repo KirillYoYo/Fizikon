@@ -2,7 +2,7 @@ body, html{ margin:0; padding:0;  height:100%;}
 body{ -webkit-backface-visibility: hidden;  -webkit-font-smoothing: antialiased; }
 #app {
 	position: relative;
-	height: 100%;
+	min-height: 100%;
 
 	.provider-inner {
 		height: 100%;
@@ -15,15 +15,21 @@ body{ -webkit-backface-visibility: hidden;  -webkit-font-smoothing: antialiased;
 		justify-content: space-between;
 
 		.page-container {
+			min-height: 350px;
 			flex-grow: 1;
-			min-width: 480px;
-			max-width: 1024px;
+			min-width: 280px;
+			max-width: 960px;
 			width: 100%;
 			display: flex;
 			margin: 0 auto;
-			padding-top: 20px;
+			padding: 20px 20px 0px;
 			align-items: center;
 			flex-direction: column;
+			box-sizing: border-box;
 		}
+	}
+
+	.page {
+		overflow-y: auto;
 	}
 }

@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from '../components/header/index';
 import Footer from '../components/footer/index';
+import Showcase from './showcase';
 import app from './app.less';
 
 class App extends React.Component {
@@ -19,7 +20,7 @@ class App extends React.Component {
 			<div className='app-inner'>
 				<Header />
 				<div className="page-container">
-					<h1>!!!!!!!!!!!!</h1>
+					<Showcase />
 				</div>
 				<Footer />
 			</div>
