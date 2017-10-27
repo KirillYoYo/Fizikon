@@ -207,10 +207,10 @@ export default class Showcase extends React.Component {
                                     <div className="courses-sci">
                                         <div className="sci-figure">
                                             {
-                                                !item.img ?
+                                                !item.courseId ?
                                                     <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRogidlVrfx2Q_qKWJIZ43w4RbD4YCaf6lBXG5LjnyrxxZ8Q4xw' alt=""/>
                                                     :
-                                                    <img src={item.img} alt=""/>
+                                                    <img src={`https://www.imumk.ru/covers/${item.courseId}.png`} alt=""/>
                                             }
                                         </div>
                                         <div className="sci-info">
